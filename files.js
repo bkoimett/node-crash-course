@@ -8,3 +8,9 @@ fs.readFile('./docs/blog1.txt', (err, data) => { //add 'utf8' encoding if you wa
     }
     console.log('File content:', data.toString());
 })
+
+// write files
+
+fs.writeFile('./docs/blog1.txt', 'Hello, Again', () => {
+    console.log('File was written');
+})
