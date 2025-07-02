@@ -8,7 +8,7 @@ const people = [
 const peoples = people.map(person => person.name); // Extract names from people objects
 const ages = people.map(person => person.age); // Extract ages from people objects
 // console.log(ages); // [30, 25, 28, 32]
-console.log(people);
+// console.log(people);
 
 // Exporting the people array for use in other modules
 module.exports = {peoples, ages};

@@ -1,3 +1,4 @@
-const xyz = require('./people.js');
+// const xyz = require('./people.js');
+const {peoples, ages} = require('./people.js');
 
-console.log(xyz);
+console.log(peoples, ages);
