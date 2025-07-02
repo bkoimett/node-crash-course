@@ -1,8 +1,10 @@
-//
+# Run code in node
 
-//
+# Global object
+- objects and methods available
 
 # Modules
+
 
 # File Systems
 > Import core module (const fs = require("fs"))
@@ -14,3 +16,5 @@
  # Streams and Buffers
  - **streams** - using data, before it has finished loading
  - **buffer**  - a temporary memory storage for small bits of data (streaming services)
+
+## **Clients and Servers**
