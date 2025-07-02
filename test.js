@@ -1,3 +1,8 @@
 const firstName = 'Koimett';
 
-console.log(`Hello, ${firstName}!`);
+const greet = (firstName) => {
+    console.log(`Hello, ${firstName}!`);
+}
+
+greet('Mario');
+greet('Yoshi');
