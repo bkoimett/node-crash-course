@@ -23,3 +23,6 @@
 - ports and port number
 -server 
 -client 
+
+> Response object
+- res headers
