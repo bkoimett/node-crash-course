@@ -26,3 +26,5 @@
 
 > Response object
 - res headers
+> Returnning html docs
+- 
