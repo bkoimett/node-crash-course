@@ -28,3 +28,17 @@
 - res headers
 > Returnning html docs
 - 
+> Response status code
+- type of reponse sent to browser
+
+200 - ok
+301 - resource moved
+404 - not found
+500 - internal server
+
+
+100 - informational res
+200 - success codes
+300 - codes for redirects
+400 - user or client error codes
+500 - server side error codes
