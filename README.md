@@ -42,3 +42,11 @@
 300 - codes for redirects
 400 - user or client error codes
 500 - server side error codes
+
+> redirects
+
+        case '/about-me':
+            res.statusCode = 301
+            res.setHeader('location', '/about')
+            res.end()
+            break
