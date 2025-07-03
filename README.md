@@ -17,4 +17,9 @@
  - **streams** - using data, before it has finished loading
  - **buffer**  - a temporary memory storage for small bits of data (streaming services)
 
-## **Clients and Servers**
+## **3. Clients and Servers**
+
+- Ip addresses and Domains
+- ports and port number
+-server 
+-client 
