@@ -4,9 +4,10 @@ const server = http.createServer((req, res) => {
     console.log(req.url, req.method)
 
     // set header content style
-    res.setHeader('Content-type', 'text/plain')
+    res.setHeader('Content-type', 'text/html')
 
-    res.write('Hello, world')
+    res.write('<h1>Hello Ninjas</h1>')
+    res.write('<p>How are you?</p>')
     res.end()
 })
 
