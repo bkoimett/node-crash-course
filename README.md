@@ -56,3 +56,9 @@
 
 - installing libraries, frameworks and packages
 eg - lodash/ nodemon - dvp workflow (live reload server)
+
+
+# package.json File
+- keeps track of project details, packages etc
+- npm init (agree to everything)
+- package loc- dont edit/just stores versions
