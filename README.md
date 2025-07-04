@@ -50,3 +50,9 @@
             res.setHeader('location', '/about')
             res.end()
             break
+
+
+## NPM
+
+- installing libraries, frameworks and packages
+eg - lodash/ nodemon - dvp workflow (live reload server)
