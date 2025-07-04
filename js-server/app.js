@@ -24,5 +24,6 @@ app.get('/about-me', (req, res) => {
 
 // 404 page - always at the bottom
 app.use( (req, res) => {
-    res.sendFile('./views/404.html', { root: __dirname})
+    // res.sendFile('./views/404.html', { root: __dirname})
+    res.status(404).sendFile('./views/404.html', { root: __dirname})
 })
