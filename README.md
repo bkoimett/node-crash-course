@@ -62,3 +62,20 @@ eg - lodash/ nodemon - dvp workflow (live reload server)
 - keeps track of project details, packages etc
 - npm init (agree to everything)
 - package loc- dont edit/just stores versions
+
+# dependencies
+- just type
+
+```bash
+> npm install 
+```
+
+this installs all dependencies
+start with this when you get a js project from online
+
+
+## 6. Express apps
+- easily manage routing, requests
+
+> Creating an Express App
+-
