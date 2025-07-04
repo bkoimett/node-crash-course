@@ -78,4 +78,12 @@ start with this when you get a js project from online
 - easily manage routing, requests
 
 > Creating an Express App
--
+- create new file (app.js)
+- require 'express'
+- create app instance
+- create instance to listen to requests
+- app.get('<root>', (req, res)) -
+- app.use() -middleware (should go at the very bottom)
+- fires always: if no request matches user request, we execute it. otherwise ikimatch, inaacha kuenda down the page. 
+- res.sendFile()
+- res.redirect()
