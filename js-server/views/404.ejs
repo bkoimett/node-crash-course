@@ -1,22 +1,14 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8" />
-  <title>Page Not Found | <%= title %> </title>
-</head>
+  <%- include('./partials/head.ejs') %>
 <body>
-  <nav>
-    <a href="/">Home</a> |
-    <a href="/create">Create</a> |
-    <a href="/about">About</a>
-  </nav>
+
+  <%- include('./partials/nav.ejs')%>
 
   <div class="not-found content">
     <h2>Oops, page not found :)</h2>
   </div>
 
-  <footer>
-    <p>Copyright &copy; 2025</p>
-  </footer>
+  <%- include('./partials/footer.ejs') %>
 </body>
 </html>

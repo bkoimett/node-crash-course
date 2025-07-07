@@ -1,15 +1,12 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8" />
-  <title>Create | <%= title %> </title>
-</head>
+  
+  <%- include('./partials/head.ejs') %>
+
 <body>
-  <nav>
-    <a href="/">Home</a> |
-    <a href="/create">Create</a> |
-    <a href="/about">About</a>
-  </nav>
+
+  <%- include('./partials/nav.ejs')%>
+
   <br>
 
   <div class="create-blog content">
@@ -27,8 +24,6 @@
     </form>
   </div>
 
-  <footer>
-    <p>Copyright &copy; 2025</p>
-  </footer>
+  <%- include('./partials/footer.ejs') %>
 </body>
 </html>

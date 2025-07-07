@@ -1,15 +1,9 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8" />
-  <title>About Us | <%= title %></title>
-</head>
+  <%- include('./partials/head.ejs') %>
 <body>
-  <nav>
-    <a href="/">Home</a> |
-    <a href="/create">Create</a> |
-    <a href="/about">About</a>
-  </nav>
+
+  <%- include('./partials/nav.ejs')%>
 
   <div class="about content">
     <h2>About Us</h2>
@@ -18,8 +12,7 @@
     <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Quia quibusdam quaerat illo a modi tenetur ut blanditiis, illum quo consectetur recusandae excepturi natus impedit rem, tempora cum fuga quae in.</p>
   </div>
 
-  <footer>
-    <p>Copyright &copy; 2025</p>
-  </footer>
+  <%- include('./partials/footer.ejs') %>
+
 </body>
 </html>
