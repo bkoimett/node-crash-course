@@ -107,3 +107,6 @@ start with this when you get a js project from online
 - ejs tags ---> <% const name = "Benjie" %>
 - calling <p><%= name %></p>
 - runs as js in server
+
+- add object as parameter in response render 
+- add ejs tag to the ejs file where it should show the dynamic code
