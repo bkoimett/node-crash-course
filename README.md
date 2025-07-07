@@ -110,3 +110,14 @@ start with this when you get a js project from online
 
 - add object as parameter in response render 
 - add ejs tag to the ejs file where it should show the dynamic code
+- **server side rendering** - the process of processing ejs templates through a view engine on a server to diplay valid html with dynamic content.
+
+> Partials
+
+- these are reusable ejs files that are extracted from common code across the board
+- create partials folder/ add the ejs partials files/ cut and paste the codeblocks from the main ejs files into the
+partials 
+- use **include statement** - <%- include('file_path')%> to where the partials need to appear in the html
+
+> adding css
+- for now add to head.ejs as in-document styling
