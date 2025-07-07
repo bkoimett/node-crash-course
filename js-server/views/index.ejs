@@ -14,15 +14,18 @@
   <div class="blogs content">
     <h2>All Blogs</h2>
 
-    <h3 class="title">My First Blog</h3>
-    <p class="snippet">This is the snippet for my first blog post.</p>
+    <% if (blogs.length > 0) { %>
+      <% blogs.forEach(blog => { %>
 
-    <h3 class="title">Another Blog Post</h3>
-    <p class="snippet">Snippet for the second blog post goes here.</p>
+        <h3 class="title"><%= blog.title %></h3>
+        <p class="snippet"><%= blog.snippet %></p>
 
-    <!-- If there were no blogs, you’d show this instead:
-    <p>There are no blogs to display...</p>
-    -->
+      <% }) %>
+    <% } else { %>
+      <h3>There are no blogs to display.</h3>
+    <% } %>
+    
+
   </div>
 
   <footer>
