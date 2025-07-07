@@ -87,3 +87,23 @@ start with this when you get a js project from online
 - fires always: if no request matches user request, we execute it. otherwise ikimatch, inaacha kuenda down the page. 
 - res.sendFile()
 - res.redirect()
+
+
+## 7. View Engines 🪟
+
+- static : doesnt change
+-p dynamic : ever changing
+
+- use a **view engine** : inject dynamic data into them (eg) express handle bar, ejs etc.
+
+> EJS
+- install
+- register : app.set ('view engine', 'ejs') - application settings
+- app.set('views', 'my views folder')
+- ejs - creates template (checks view folder automatically)
+- create index.ejs view
+
+> passing data into views
+- ejs tags ---> <% const name = "Benjie" %>
+- calling <p><%= name %></p>
+- runs as js in server
