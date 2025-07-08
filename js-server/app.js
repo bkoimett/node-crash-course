@@ -1,17 +1,23 @@
-const express = require('express')
+const express = require("express");
 
 // express app initialisation
-const app = express()
+const app = express();
 
 // register view engine
-app.set('view engine', 'ejs')
+app.set("view engine", "ejs");
 
 // listen for requests
-app.listen(3000)
+app.listen(3000);
 
+// middleware
+app.use((req, res) => {
+  console.log("new request made:");
+  console.log("host", req.hostname);
+  console.log("path", req.path);
+  console.log("method:", req.method);
+});
 
-
-// get handlers 
+// get handlers
 app.get("/", (req, res) => {
   const blogs = [
     {
@@ -31,21 +37,19 @@ app.get("/", (req, res) => {
 });
 
 app.get("/about", (req, res) => {
-    res.render("about", { title: 'About' });
+  res.render("about", { title: "About" });
 });
 
-app.get('/create', (req, res) => {
-    res.render("create", { title: 'Create a new blog' });
-})
-
-
+app.get("/create", (req, res) => {
+  res.render("create", { title: "Create a new blog" });
+});
 
 // redirect
-app.get('/about-me', (req, res) => {
-    res.redirect('/about')
-})
+app.get("/about-me", (req, res) => {
+  res.redirect("/about");
+});
 
 // 404 page - always at the bottom
-app.use( (req, res) => {
-    res.status(404).render('404', { title: '404'})
-})
+app.use((req, res) => {
+  res.status(404).render("404", { title: "404" });
+});
