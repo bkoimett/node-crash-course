@@ -10,7 +10,8 @@ app.set("view engine", "ejs");
 // listen for requests
 app.listen(3000);
 
-// middleware - for all req including post
+// middleware and static - for all req including post
+app.use(express.static('public'))
 app.use(morgan('dev'))
 
 // get handlers
