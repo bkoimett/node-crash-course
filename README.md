@@ -142,3 +142,29 @@ start with this when you get a js project from online
 - indicates complition of middleware handling and prompts
 server to move on to the next code
 - added as a middleware paremeter and called there too
+
+``` js
+app.use((req, res, next) => {
+  console.log("new request made:");
+  console.log("host", req.hostname);
+  console.log("path", req.path);
+  console.log("method:", req.method);
+  next();
+});
+
+app.use((req, res, next) => {
+  console.log("2nd middleware fired");
+  next();
+});
+```
+
+
+> 3rd party middleware
+- download from npm website 
+- require it
+- invoke with either options as parameter 
+
+``` js
+app.use(morgan('dev'))
+```
+
