@@ -167,4 +167,10 @@ app.use((req, res, next) => {
 ``` js
 app.use(morgan('dev'))
 ```
+> Static files 
+- to serve them would need static middleware
 
+```js 
+app.use(express.static('public'))
+// public - folder holding static files
+```
