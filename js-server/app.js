@@ -18,6 +18,11 @@ app.use((req, res, next) => {
   next();
 });
 
+app.use((req, res, next) => {
+  console.log("2nd middleware fired");
+  next();
+});
+
 // get handlers
 app.get("/", (req, res) => {
   const blogs = [
