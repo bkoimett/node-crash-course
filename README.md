@@ -1,275 +1,273 @@
-# Run code in node
+# 🟢 Node.js, Express, and MongoDB – Summary Notes
 
-# Global object
+---
 
-- objects and methods available
+## 1. Running Code in Node
 
-# Modules
+- Use `node <filename>` to run JS code in the terminal.
 
-# File Systems
+---
 
-> Import core module (const fs = require("fs"))
+## 2. The Global Object
 
-- read
-- write files :
-- directories
-- delete files
+- Access to built-in objects and methods like:
+  - `console`
+  - `setTimeout`, `setInterval`
+  - `__dirname`, `__filename`
+  - `process`
 
-# Streams and Buffers
+---
 
-- **streams** - using data, before it has finished loading
-- **buffer** - a temporary memory storage for small bits of data (streaming services)
+## 3. Modules
 
-## **3. Clients and Servers**
+- CommonJS modules (`require`)
+- Split code into reusable files/modules
 
-- Ip addresses and Domains
-- ports and port number
-  -server
-  -client
+---
 
-> Response object
+## 4. File System (FS)
 
-- res headers
-  > Returnning html docs
-- > Response status code
-- type of reponse sent to browser
+> Import with:
 
-200 - ok
-301 - resource moved
-404 - not found
-500 - internal server
-
-100 - informational res
-200 - success codes
-300 - codes for redirects
-400 - user or client error codes
-500 - server side error codes
-
-> redirects
-``` js
-            case '/about-me':
-            res.statusCode = 301
-            res.setHeader('location', '/about')
-            res.end()
-            break
+```js
+const fs = require('fs');
 ```
 
-## NPM
+### File Operations
 
-- installing libraries, frameworks and packages
-  eg - lodash/ nodemon - dvp workflow (live reload server)
+- **Read a file**: `fs.readFile(path, callback)`
+- **Write a file**: `fs.writeFile(path, data, callback)`
+- **Create/Delete directories**:
+  - `fs.mkdir(path, callback)`
+  - `fs.rmdir(path, callback)`
+- **Delete files**: `fs.unlink(path, callback)`
 
-# package.json File
+---
 
-- keeps track of project details, packages etc
-- npm init (agree to everything)
-- package loc- dont edit/just stores versions
+## 5. Streams and Buffers
 
-# dependencies
+- **Streams**: Work with data as it is loaded (e.g., large files).
+- **Buffers**: Temporary memory holding small chunks of data during streaming.
 
-- just type
+---
+
+## 6. Clients and Servers (Networking Basics)
+
+- **IP Addresses**: Unique network identifiers.
+- **Domains**: Human-readable names mapped to IPs.
+- **Ports**:
+  - Server and client communicate via port numbers.
+
+### Response Object in Node.js
+
+- **Status Codes**:
+  - `200`: OK
+  - `301`: Resource moved
+  - `404`: Not found
+  - `500`: Server error
+
+- **Redirect example**:
+
+```js
+case '/about-me':
+  res.statusCode = 301;
+  res.setHeader('Location', '/about');
+  res.end();
+  break;
+```
+
+---
+
+## 7. NPM (Node Package Manager)
+
+- Install libraries/frameworks:
+  - `npm install <package>`
+  - `nodemon` for live server reloads during dev
+
+### `package.json`
+
+- Tracks project metadata and dependencies.
+- Create with: `npm init`
+- Install dependencies from a cloned project with:
 
 ```bash
-> npm install
+npm install
 ```
 
-this installs all dependencies
-start with this when you get a js project from online
+---
 
-## 6. Express apps
+## 8. Express.js
 
-- easily manage routing, requests
+- Simplifies HTTP server and routing.
 
-> Creating an Express App
+### Setup
 
-- create new file (app.js)
-- require 'express'
-- create app instance
-- create instance to listen to requests
-- app.get('<root>', (req, res)) -
-- app.use() -middleware (should go at the very bottom)
-- fires always: if no request matches user request, we execute it. otherwise ikimatch, inaacha kuenda down the page.
-- res.sendFile()
-- res.redirect()
+```js
+const express = require('express');
+const app = express();
 
-## 7. View Engines 🪟
+app.listen(3000);
+```
 
-- static : doesnt change
-  -p dynamic : ever changing
+### Basic Usage
 
-- use a **view engine** : inject dynamic data into them (eg) express handle bar, ejs etc.
+- `app.get(path, callback)`
+- `app.use(middleware)`
+- `res.sendFile()`
+- `res.redirect()`
 
-> EJS
+---
 
-- install
-- register : app.set ('view engine', 'ejs') - application settings
-- app.set('views', 'my views folder')
-- ejs - creates template (checks view folder automatically)
-- create index.ejs view
+## 9. View Engines (EJS)
 
-> passing data into views
+- Allows **server-side rendering** of dynamic content.
 
-- ejs tags ---> <% const name = "Benjie" %>
-- calling <p><%= name %></p>
-- runs as js in server
+### Setup
 
-- add object as parameter in response render
-- add ejs tag to the ejs file where it should show the dynamic code
-- **server side rendering** - the process of processing ejs templates through a view engine on a server to diplay valid html with dynamic content.
+```js
+app.set('view engine', 'ejs');
+app.set('views', 'my-views-folder'); // optional if custom folder
+```
 
-> Partials
+### EJS Syntax
 
-- these are reusable ejs files that are extracted from common code across the board
-- create partials folder/ add the ejs partials files/ cut and paste the codeblocks from the main ejs files into the
-  partials
-- use **include statement** - <%- include('file_path')%> to where the partials need to appear in the html
+```ejs
+<% const name = "Benjie" %>
+<p><%= name %></p>
+```
 
-> adding css
+### Partials
 
-- for now add to head.ejs as in-document styling
+- Reusable components (e.g., `head.ejs`, `nav.ejs`).
+- Include with:
 
-## 8. Middleware
+```ejs
+<%- include('partials/header') %>
+```
 
-- Code which runs (on the server) between getting a request and sending a response.
-- app.use() / app.get(for routes)
+---
 
-> Middleware examples
+## 10. Middleware
 
-- logger middleware(log req details)
-- authentication check middleware
-- json-parsing middleware (from req)
-- return 404 pages (app.use)
+> Code that runs between receiving a request and sending a response.
 
-> Next()
+### Examples
 
-- indicates complition of middleware handling and prompts
-  server to move on to the next code
-- added as a middleware paremeter and called there too
+- Logger
+- Authentication
+- Error handling
+- Serving static files:
+
+```js
+app.use(express.static('public'));
+```
+
+### Using `next()`
 
 ```js
 app.use((req, res, next) => {
-  console.log("new request made:");
-  console.log("host", req.hostname);
-  console.log("path", req.path);
-  console.log("method:", req.method);
-  next();
-});
-
-app.use((req, res, next) => {
-  console.log("2nd middleware fired");
-  next();
+  console.log('Request received');
+  next(); // continue to next middleware/route
 });
 ```
 
-> 3rd party middleware
-
-- download from npm website
-- require it
-- invoke with either options as parameter
+### Third-party Middleware
 
 ```js
-app.use(morgan("dev"));
+const morgan = require('morgan');
+app.use(morgan('dev'));
 ```
 
-> Static files
+---
 
-- to serve them would need static middleware
+## 11. MongoDB + Mongoose
 
-```js
-app.use(express.static("public"));
-// public - folder holding static files
-```
+- MongoDB = NoSQL DB (Documents & Collections).
+- Mongoose = ODM (Object Data Mapper) for MongoDB.
 
-## MONGODB
+### MongoDB Atlas (Cloud DB)
 
-- sql (tables/rows/col)
-- noSQL (collections/docs) eg mongoDB
-- blog collection ---stores--> blog document
-- a doc is a record, a single data item
-- key and value pairs (id:int, title: str etc)
+- Create a cluster at [mongodb.com/cloud/atlas](https://www.mongodb.com/cloud/atlas)
+- Get your connection string.
 
-> Mongo DB setup and atlas
-
-- mdb atlas -> cloudbased db
+### Setup
 
 ```bash
-https://www.mongodb.com/cloud/atlas/
+npm install mongoose
 ```
 
-- signin/ build cluster
-- connect via application
-- create connection string variable
-
 ```js
-const connection = '<insert connection string from cluster>'
+const mongoose = require('mongoose');
+
+mongoose.connect('<connection-string>', {
+  useNewUrlParser: true,
+  useUnifiedTopology: true
+})
+.then(() => console.log('Connected'))
+.catch(err => console.log(err));
 ```
 
--
-
-> Mongoose, Models and Schema
-
-- object document mapping library
-- schema - defines structure of data in db
- eg blog scheme = title, snippet, body properties(string), required
- - model - allows communication with db collections
-
- steps: Connect DB
- - npm install mongoose
- - require it at the top
- - mongoose.connect(connection string, options object)
- - edit db name in connection string
- - { useNewUrlParser: true, useUnifiedTopology: true } - options object -- optional - removes depracation
- - takes time so use:
- .then()
- .catch()
-
-steps: Manipulate DB
-- create models-blog.js
-- define schema
-- define model
-- export model
-
-> Getting and Saving Data
+### Mongoose Models
 
 ```js
+// models/blog.js
+const mongoose = require('mongoose');
+const Schema = mongoose.Schema;
 
-// mongoose and mongo sandbox routes
+const blogSchema = new Schema({
+  title: { type: String, required: true },
+  snippet: String,
+  body: String
+}, { timestamps: true });
+
+module.exports = mongoose.model('Blog', blogSchema);
+```
+
+---
+
+## 12. MongoDB Routes (Sandbox Testing)
+
+```js
+// Add a blog
 app.get('/add-blog', (req, res) => {
   const blog = new Blog({
-    title: 'new blog 2',
-    snippet: 'about my new blog',
-    body: 'more about my new blog'
-  })
+    title: 'New Blog',
+    snippet: 'This is a test blog',
+    body: 'More about this blog...'
+  });
 
   blog.save()
-    .then((result) =>{
-      res.send(result)
-    })
-    .catch((err) => {
-      console.log(err)
-    })
-})
+    .then(result => res.send(result))
+    .catch(err => console.log(err));
+});
 
+// Get all blogs
 app.get('/all-blogs', (req, res) => {
   Blog.find()
-    .then((result) =>{
-      res.send(result)
-    })
-    .catch((err) =>{
-      console.log(err)
-    })
-})
+    .then(result => res.send(result))
+    .catch(err => console.log(err));
+});
 
+// Get a single blog by ID
 app.get('/single-blog', (req, res) => {
-  Blog.findById("6883d851ed673f19580c1d83")
-    .then((result) => {
-      res.send(result);
-    })
-    .catch((err) => {
-      console.log(err);
-    });
-})
-
+  Blog.findById('PUT-ID-HERE')
+    .then(result => res.send(result))
+    .catch(err => console.log(err));
+});
 ```
 
-> Outputtind documents in view
+---
+
+## 13. Rendering MongoDB Data to Views
+
+- Use `.render()` and pass MongoDB data as an object:
+
+```js
+app.get('/blogs', (req, res) => {
+  Blog.find()
+    .then(result => res.render('index', { title: 'All Blogs', blogs: result }))
+    .catch(err => console.log(err));
+});
+```
+
+---
