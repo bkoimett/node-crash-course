@@ -2,13 +2,14 @@ const express = require("express");
 const morgan = require("morgan");
 const mongoose = require("mongoose");
 
-const Blog = require('./models/blog')
+const Blog = require('./models/blog');
+const { result } = require("lodash");
 
 // express app initialisation
 const app = express();
 
 // connect to MongoDB
-const dbURI ="mongodb+srv://koimettb:1738@nodejstuts.rmg3aqa.mongodb.net/?retryWrites=true&w=majority&appName=nodejstuts";
+const dbURI ="mongodb+srv://koimettb:1738@nodejstuts.rmg3aqa.mongodb.net/node-tuts?retryWrites=true&w=majority&appName=nodejstuts";
 mongoose.connect(dbURI)
   .then((result) => app.listen(3000) && console.log('connection successful !')) // only listen if connection is made
   .catch((err) => console.log(err));
@@ -21,9 +22,9 @@ app.use(express.static("public"));
 app.use(morgan("dev"));
 
 // mongoose and mongo sandbox routes
-app.get('./add-blog', (req, res) => {
+app.get('/add-blog', (req, res) => {
   const blog = new Blog({
-    title: 'new blog',
+    title: 'new blog 2',
     snippet: 'about my new blog',
     body: 'more about my new blog'
   })
@@ -33,6 +34,16 @@ app.get('./add-blog', (req, res) => {
       res.send(result)
     })
     .catch((err) => {
+      console.log(err)
+    })
+})
+
+app.get('/all-blogs', (req, res) => {
+  Blog.find()
+    .then((result) =>{
+      res.send(result)
+    })
+    .catch((err) =>{
       console.log(err)
     })
 })
