@@ -46,12 +46,13 @@
 500 - server side error codes
 
 > redirects
-
-        case '/about-me':
+``` js
+            case '/about-me':
             res.statusCode = 301
             res.setHeader('location', '/about')
             res.end()
             break
+```
 
 ## NPM
 
@@ -133,17 +134,19 @@ start with this when you get a js project from online
 - app.use() / app.get(for routes)
 
 > Middleware examples
+
 - logger middleware(log req details)
 - authentication check middleware
 - json-parsing middleware (from req)
 - return 404 pages (app.use)
 
 > Next()
+
 - indicates complition of middleware handling and prompts
-server to move on to the next code
+  server to move on to the next code
 - added as a middleware paremeter and called there too
 
-``` js
+```js
 app.use((req, res, next) => {
   console.log("new request made:");
   console.log("host", req.hostname);
@@ -158,19 +161,64 @@ app.use((req, res, next) => {
 });
 ```
 
-
 > 3rd party middleware
-- download from npm website 
-- require it
-- invoke with either options as parameter 
 
-``` js
-app.use(morgan('dev'))
+- download from npm website
+- require it
+- invoke with either options as parameter
+
+```js
+app.use(morgan("dev"));
 ```
-> Static files 
+
+> Static files
+
 - to serve them would need static middleware
 
-```js 
-app.use(express.static('public'))
+```js
+app.use(express.static("public"));
 // public - folder holding static files
 ```
+
+## MONGODB
+
+- sql (tables/rows/col)
+- noSQL (collections/docs) eg mongoDB
+- blog collection ---stores--> blog document
+- a doc is a record, a single data item
+- key and value pairs (id:int, title: str etc)
+
+> Mongo DB setup and atlas
+
+- mdb atlas -> cloudbased db
+
+```bash
+https://www.mongodb.com/cloud/atlas/
+```
+
+- signin/ build cluster
+- connect via application
+- create connection string variable
+
+```js
+const connection = '<insert connection string from cluster>'
+```
+
+-
+
+> Mongoose, Models and Schema
+
+- object document mapping library
+- schema - defines structure of data in db
+ eg blog scheme = title, snippet, body properties(string), required
+ - model - allows communication with db collections
+
+ steps:
+ - npm install mongoose
+ - require it at the top
+ - mongoose.connect(connection string, options object)
+ - edit db name in connection string
+ - { useNewUrlParser: true, useUnifiedTopology: true } - options object -- optional - removes depracation
+ - takes time so use:
+ .then()
+ .catch()

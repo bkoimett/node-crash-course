@@ -1,8 +1,15 @@
 const express = require("express");
 const morgan = require("morgan");
+const mongoose = require("mongoose");
 
 // express app initialisation
 const app = express();
+
+// connect to MongoDB
+const dbURI ="mongodb+srv://koimettb:1738@nodejstuts.rmg3aqa.mongodb.net/?retryWrites=true&w=majority&appName=nodejstuts";
+mongoose.connect(dbURI)
+  .then((result) => console.log("connected to database"))
+  .catch((err) => console.log(err));
 
 // register view engine
 app.set("view engine", "ejs");
@@ -11,8 +18,8 @@ app.set("view engine", "ejs");
 app.listen(3000);
 
 // middleware and static - for all req including post
-app.use(express.static('public'))
-app.use(morgan('dev'))
+app.use(express.static("public"));
+app.use(morgan("dev"));
 
 // get handlers
 app.get("/", (req, res) => {
