@@ -2,6 +2,8 @@ const express = require("express");
 const morgan = require("morgan");
 const mongoose = require("mongoose");
 
+const Blog = require('./models/blog')
+
 // express app initialisation
 const app = express();
 
@@ -14,12 +16,20 @@ mongoose.connect(dbURI)
 // register view engine
 app.set("view engine", "ejs");
 
-// listen for requests
-
-
 // middleware and static - for all req including post
 app.use(express.static("public"));
 app.use(morgan("dev"));
+
+// mongoose and mongo sandbox routes
+app.get('./add-blog', (req, res) => {
+  const blog = new Blog({
+    title: 'new blog',
+    snippet: 'about my new blog',
+    body: 'more about my new blog'
+  })
+
+  blog.save()
+})
 
 // get handlers
 app.get("/", (req, res) => {
