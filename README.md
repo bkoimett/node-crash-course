@@ -213,7 +213,7 @@ const connection = '<insert connection string from cluster>'
  eg blog scheme = title, snippet, body properties(string), required
  - model - allows communication with db collections
 
- steps:
+ steps: Connect DB
  - npm install mongoose
  - require it at the top
  - mongoose.connect(connection string, options object)
@@ -222,3 +222,12 @@ const connection = '<insert connection string from cluster>'
  - takes time so use:
  .then()
  .catch()
+
+steps: Manipulate DB
+- create models-blog.js
+- define schema
+- define model
+- export model
+
+> Getting and Saving Data
+

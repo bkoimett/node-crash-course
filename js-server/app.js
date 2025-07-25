@@ -29,6 +29,12 @@ app.get('./add-blog', (req, res) => {
   })
 
   blog.save()
+    .then((result) =>{
+      res.send(result)
+    })
+    .catch((err) => {
+      console.log(err)
+    })
 })
 
 // get handlers
