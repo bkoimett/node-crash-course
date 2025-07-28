@@ -19,6 +19,7 @@ app.set("view engine", "ejs");
 
 // middleware and static - for all req including post
 app.use(express.static("public"));
+app.use(express.urlencoded( {extended: true} ))
 app.use(morgan("dev"));
 
 
@@ -42,6 +43,20 @@ app.get('/blogs', (req, res) => {
     })
     .catch((err) => {
       console.log(err)
+    })
+})
+
+// method handlers
+
+app.use('/', (req, res) => {
+  const blog = new Blog(req.body)
+  
+  blog.save()
+    .then((result) => {
+      res.redirect('/blogs')
+    })
+    .catch((err) => {
+      console.log(err);
     })
 })
 
