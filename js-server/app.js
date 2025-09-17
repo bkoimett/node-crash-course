@@ -31,6 +31,10 @@ app.get("/about", (req, res) => {
   res.render("about", { title: "About" });
 });
 
+app.get("/create", (req, res) => {
+  res.render("create", { title: "Create a new blog" });
+});
+
 // blog routes
 app.use("/blogs", blogRoutes); // since we have scoped out the blogs, it makes the routes reusable
 

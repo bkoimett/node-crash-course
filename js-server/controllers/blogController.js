@@ -25,9 +25,9 @@ const blog_details = (req, res) => {
 };
 
 // blog_create_get
-const blog_create_get = (req, res) => {
-  res.render("create", { title: "Create a new blog" });
-};
+// const blog_create_get = (req, res) => {
+
+// };
 
 // blog_create_post
 const blog_create_post = (req, res) => {
@@ -57,7 +57,6 @@ const blog_delete = (req, res) => {
 module.exports = {
   blog_index,
   blog_details,
-  blog_create_get,
   blog_create_post,
   blog_delete,
 };

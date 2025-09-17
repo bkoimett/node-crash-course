@@ -3,7 +3,7 @@ const blogController = require('../controllers/blogController')
 const router = express.Router()
 
 // create route
-router.get("/create", blogController.blog_create_get);
+// router.get("/create", blogController.blog_create_get);
 
 // index - find blog
 router.get("/", blogController.blog_index);
