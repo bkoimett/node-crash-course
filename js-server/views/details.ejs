@@ -18,6 +18,7 @@
   <script>
     const trashcan = document.querySelector('a.delete');
 
+    // event object as parameter
     trashcan.addEventListener('click', (e) => {
       const endpoint = `/blogs/${trashcan.dataset.doc}`;
 
