@@ -41,7 +41,7 @@ app.get('/blogs/:id', (req,res) => {
 
   Blog.findById(id)
     .then((result) => {
-      render('details', { blog: result, title: 'Blog Details'})
+      res.render('details', { blog: result, title: 'Blog Details'})
     })
     .catch((err) => {
       console.log(err)
@@ -62,7 +62,7 @@ app.get('/blogs', (req, res) => {
 
 // method handlers
 
-app.use('/', (req, res) => {
+app.post('/blogs', (req, res) => {
   const blog = new Blog(req.body)
   
   blog.save()
