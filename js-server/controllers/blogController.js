@@ -15,7 +15,6 @@ const blog_index = (req, res) => {
 // blog_details
 const blog_details = (req, res) => {
   const id = req.params.id;
-
   Blog.findById(id)
     .then((result) => {
       res.render("details", { blog: result, title: "Blog Details" });
