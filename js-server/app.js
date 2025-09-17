@@ -32,7 +32,7 @@ app.get("/about", (req, res) => {
 });
 
 // blog routes
-app.use("/blogs", blogRoutes);
+app.use("/blogs", blogRoutes); // since we have scoped out the blogs, it makes the routes reusable
 
 // 404 page - always at the bottom
 app.use((req, res) => {
