@@ -50,3 +50,4 @@ if (fs.existsSync('./docs/deleteMe.txt')) {
     });
 }
 
+// help
